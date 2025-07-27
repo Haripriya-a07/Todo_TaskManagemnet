@@ -1,6 +1,5 @@
 import { Tabs } from 'expo-router';
 import { SquareCheck as CheckSquare, Square, List } from 'lucide-react-native';
-
 export default function TabLayout() {
   return (
     <Tabs
