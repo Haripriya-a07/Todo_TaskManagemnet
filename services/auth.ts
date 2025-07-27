@@ -11,14 +11,12 @@ import * as WebBrowser from 'expo-web-browser';
 
 WebBrowser.maybeCompleteAuthSession();
 
-// ✅ Replace with your real Firebase config
 const firebaseConfig = {
-  apiKey: "demo-api-key",
-  authDomain: "demo-project.firebaseapp.com",
-  projectId: "demo-project",
-  storageBucket: "demo-project.appspot.com",
-  messagingSenderId: "123456789",
-  appId: "demo-app-id"
+  apiKey: "AIzaSyCSK8UxEGjwXWoyjhhVc7J21CEpCUlhe5M",
+  authDomain: "todo-project.firebaseapp.com",
+  projectId: "todo-661ea",
+  messagingSenderId: "785271468324",
+  appId: "6b1c0b14-f6eb-472b-9f74-ec2b7d1c25a3"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -26,21 +24,12 @@ const auth = getAuth(app);
 
 export class AuthService {
   private static googleAuthProvider = new GoogleAuthProvider();
-
-  // This will be initialized from the auth.tsx page
   private static promptAsyncFunc: (() => Promise<any>) | null = null;
-
-  /**
-   * Initializes Google sign-in trigger from outside using `Google.useIdTokenAuthRequest`
-   */
   static setPromptAsyncFunc(promptAsync: () => Promise<any>) {
     this.promptAsyncFunc = promptAsync;
   }
 
-  /**
-   * Handles Google sign-in
-   */
-  static async signInWithGoogle(): Promise<User | null> {
+ static async signInWithGoogle(): Promise<User | null> {
     try {
       if (!this.promptAsyncFunc) {
         throw new Error('Google promptAsync function not initialized');
