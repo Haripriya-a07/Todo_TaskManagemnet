@@ -9,11 +9,10 @@ export function useAuth() {
   const [signingIn, setSigningIn] = useState(false);
 
   const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
-    clientId: '785271468324-dc8r14dqf9l46sa172htvk8eppbmb8sf.apps.googleusercontent.com', // ✅ replace with your real web client ID
+    clientId: '785271468324-dc8r14dqf9l46sa172htvk8eppbmb8sf.apps.googleusercontent.com', 
   });
 
   useEffect(() => {
-    // Set prompt function so AuthService can trigger it
     AuthService.setPromptAsyncFunc(promptAsync);
   }, [promptAsync]);
 
