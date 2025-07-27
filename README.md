@@ -2,6 +2,8 @@
 
 A cross-platform mobile todo application built with React Native (Expo) featuring Google authentication, offline support, and comprehensive task management capabilities.
 
+**Note**: This project is a part of a hackathon run by https://www.katomaran.com
+
 ## Features
 
 ### Authentication
@@ -34,6 +36,21 @@ A cross-platform mobile todo application built with React Native (Expo) featurin
 - Task filtering and search
 - Responsive design for all screen sizes
 - Modern typography with Inter font family
+
+## Architecture
+The app follows a clean, modular architecture with clear separation of concerns:
+```
+├── app/                    # Expo Router pages
+│   ├── (tabs)/            # Tab navigation screens
+│   ├── auth.tsx           # Authentication screen
+│   ├── add-task.tsx       # Task creation/editing modal
+│   └── _layout.tsx        # Root layout
+├── components/            # Reusable UI components
+├── hooks/                 # Custom React hooks
+├── services/              # Business logic and API services
+├── types/                 # TypeScript type definitions
+└── README.md
+```
 
 ### Key Design Patterns
 - **Custom Hooks**: `useTasks`, `useAuth` for state management
@@ -107,3 +124,35 @@ A cross-platform mobile todo application built with React Native (Expo) featurin
 4. **Platform**: Designed primarily for mobile devices with web compatibility
 5. **Date Handling**: Due dates are stored in ISO format for consistency
 6. **User Experience**: Emphasis on smooth animations and intuitive interactions
+
+   ## Architecture Diagram
+
+```mermaid
+graph TB
+    A[App Entry Point] --> B[Authentication Layer]
+    B --> C[Tab Navigation]
+    C --> D[Task List Screens]
+    C --> E[Task Management]
+    
+    D --> F[TaskCard Component]
+    D --> G[SearchBar Component]
+    D --> H[EmptyState Component]
+    
+    E --> I[Add/Edit Task Modal]
+    
+    F --> J[useTasks Hook]
+    I --> J
+    
+    J --> K[StorageService]
+    K --> L[AsyncStorage]
+    
+    B --> M[AuthService]
+    M --> N[Firebase Auth]
+    M --> O[Google OAuth]
+    
+    style A fill:#e1f5fe
+    style B fill:#f3e5f5
+    style J fill:#e8f5e8
+    style K fill:#fff3e0
+```
+
