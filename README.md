@@ -149,10 +149,6 @@ graph TB
     B --> M[AuthService]
     M --> N[Firebase Auth]
     M --> O[Google OAuth]
-    
-    style A fill:#e1f5fe
-    style B fill:#f3e5f5
-    style J fill:#e8f5e8
-    style K fill:#fff3e0
+
 ```
 
